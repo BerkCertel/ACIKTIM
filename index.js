@@ -1,6 +1,12 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const mysql = require("mysql");
+const db = mysql.createConnection({
+    host:'' ,//IP adress girilecek
+    user: 'root',
+    password: ''
+});
 const adminRoutes = require("./routes/admin");
 //user.js üzerinden kullanıma açtığımız js kodlarını burada import ediyoruz
 const userRoutes = require("./routes/user");
