@@ -1,17 +1,19 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+app.set("view engine","ejs");
 const mysql = require("mysql");
 const db = mysql.createConnection({
     host:'' ,//IP adress girilecek
     user: 'root',
-    password: ''
+    password: '',
+    database: ''//database ismi
 });
 const adminRoutes = require("./routes/admin");
 //user.js üzerinden kullanıma açtığımız js kodlarını burada import ediyoruz
 const userRoutes = require("./routes/user");
 
-app.use(adminRoutes);
+app.use("/admin",adminRoutes);
 
 app.use(userRoutes);
 //public dosyalarına ulaşım açıldı,"/static kısaltması ile direkt ulaşım sağlıyoruz"

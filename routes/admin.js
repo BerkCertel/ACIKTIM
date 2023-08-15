@@ -4,33 +4,36 @@ const path = require("path");
 const app = express();
 const router = express.Router();
 
-router.use("/admin/user-profile-edit/:username", function (req, res) {
-    res.sendFile(path.join(__dirname, "../views/admin","user-profile-edit.html"));
+router.use("/user-profile-edit/:username", function (req, res) {
+    res.render("admin/user-profile-edit");
 });
 
-router.use("/admin/user-registration-edit", function (req, res) {
-    res.sendFile(path.join(__dirname, "../views/admin","user-registration-edit.html"));
+router.use("/user-registration-edit", function (req, res) {
+    res.render("admin/user-registration-edit");
 });
 
-router.use("/admin/user-login-edit", function (req, res) {
-    res.sendFile(path.join(__dirname, "../views/admin","user-login-edit.html"));
+router.use("/user-login-edit", function (req, res) {
+    res.render("admin/user-login-edit");
 });
 
-router.use("admin/shopping-card-edit", function (req, res) {
-    res.sendFile(path.join(__dirname, "../views/admin","shopping-card-edit.html"));
+router.use("/shopping-card-edit", function (req, res) {
+    res.render("admin/shopping-card-edit");
 });
 
-router.use("/admin/menu-details-edit/:menuid", function (req, res) {
-    res.sendFile(path.join(__dirname, "../views/admin","menu-details-edit.html"));
+router.use("/menu-details-edit/:menuid", function (req, res) {
+    res.render("admin/menu-details-edit");
 });
 
-router.use("/admin/menu-edit", function (req, res) {
-    res.sendFile(path.join(__dirname, "../views/admin","menu-edit.html"));
+
+router.use("/menu-edit", function (req, res) {
+    res.render("admin/menu-edit");
 });
 
-router.use("/admin/index-edit", function (req, res) {
-    res.sendFile(path.join(__dirname, "../views/admin","index-edit.html"));
+
+router.use("/index-edit", function (req, res) {
+    res.render("admin/index-edit");
 });
+
 
 
 module.exports = router;
