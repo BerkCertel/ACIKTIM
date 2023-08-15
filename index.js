@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
-
 const path = require("path");
-
+const adminRoutes = require("./routes/admin");
 //user.js üzerinden kullanıma açtığımız js kodlarını burada import ediyoruz
 const userRoutes = require("./routes/user");
+
+app.use(adminRoutes);
 
 app.use(userRoutes);
 //public dosyalarına ulaşım açıldı,"/static kısaltması ile direkt ulaşım sağlıyoruz"
