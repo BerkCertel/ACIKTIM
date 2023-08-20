@@ -29,6 +29,10 @@ router.use("/menu", function (req, res) {
     res.render("users/menu");
 });
 
+router.use("/sifremi-unuttum", function (req, res) {
+    res.render("users/pass-forget");
+});
+
 router.use("/404-error", function (req, res) {
     res.render("users/404-error");
 });

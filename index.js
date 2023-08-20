@@ -1,14 +1,34 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-app.set("view engine","ejs");
+const dotenv = require("dotenv");
 const mysql = require("mysql");
-const db = mysql.createConnection({
-    host:'' ,//IP adress girilecek
-    user: 'root',
-    password: '',
-    database: ''//database ismi
+app.set("view engine", "ejs");
+//app.engine("hbs", require("hbs").__express);
+
+dotenv.config({path:'./.env'});
+
+const db  = mysql.createConnection({
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password:process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE
 });
+
+const publicDirectory = path.join(__dirname,"./.public");
+
+app.use(express.static(publicDirectory));
+
+db.connect((err)=>{
+    if(err){
+        console.log(err)
+    }
+    else{
+        console.log("mysql connected...");
+    }
+});
+
+
 const adminRoutes = require("./routes/admin");
 //user.js üzerinden kullanıma açtığımız js kodlarını burada import ediyoruz
 const userRoutes = require("./routes/user");
